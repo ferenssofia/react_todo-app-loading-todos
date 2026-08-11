@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { UserWarning } from './UserWarning';
 import { USER_ID, getTodos } from './api/todos';
 import { Todo } from './types/Todo';
+import { ErrorMessage } from './types/ErrorMessage';
 
 import { Header } from './TodoHeader';
 import { TodoList } from './TodoList';
@@ -34,7 +35,7 @@ export const App: React.FC = () => {
     getTodos()
       .then(setTodos)
       .catch(() => {
-        setErrorMessage('Unable to load todos');
+        setErrorMessage(ErrorMessage.Load);
         setTimeout(() => {
           setErrorMessage('');
         }, 3000);
